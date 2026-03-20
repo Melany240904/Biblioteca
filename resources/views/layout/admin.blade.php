@@ -20,7 +20,7 @@
       <a href="{{ route('welcome') }}" class="hover:text-purple-100 transition">Inicio</a>
       <a href="{{ route('login')}}" class="text-white hover:text-purple-200 transition">Iniciar Sesión</a>
       <a href="{{ route('home') }}" class="hover:text-purple-100 transition">Libros</a>
-      <a href="#" class="hover:text-purple-100 transition">Préstamos</a>
+      <a href="{{ route('prestamos.index')}}" class="hover:text-purple-100 transition">Préstamos</a>
       <a href="{{ route('logout') }}" class="hover:text-purple-100 transition">Salir</a>
     </nav>
     <!-- Botón hamburguesa -->
@@ -65,7 +65,7 @@
             🗂️ Categorías
         </a> 
 
-        <a href=""
+        <a href="{{ route('prestamos.index')}}"
            class="flex items-center px-3 py-2 rounded-lg transition 
                   {{ request()->routeIs('prestamos.*') ? 'bg-purple-400 text-purple-900 font-bold' : 'hover:bg-purple-400' }}">
             📄 Préstamos

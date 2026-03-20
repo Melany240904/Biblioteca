@@ -30,11 +30,14 @@
             <td class="p-3">{{ $usuario->user_type }}</td>
             <td class="p-3">
                 <a href="{{ route('usuarios.edit', $usuario->id) }}" class="text-blue-600 hover:underline">Editar</a> |
+                <a href="{{ route('usuarios.delete-confirm', $usuario->id)}}" class="text-red-600 hover:underline">Eliminar</a>               
+                <!--
                 <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="text-red-600 hover:underline">Eliminar</button>
                 </form>
+-->
             </td>
         </tr>
     @empty
@@ -44,5 +47,4 @@
     @endforelse
     </tbody>
 </table> 
-
 @endsection
