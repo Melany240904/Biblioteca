@@ -115,35 +115,65 @@
             <th class="p-3 text-left">Título</th>
             <th class="p-3 text-left">Autor</th>
             <th class="p-3 text-left">ISBN</th>
-            <th class="p-3 text-left">Editorial</th>
             <th class="p-3 text-left">Categoría</th>
+            <th class="p-3 text-left">Disponibilidad</th>
             <th class="p-3 text-left">Acciones</th>
         </tr>
     </thead>
     <tbody>
-    @forelse($libros as $libro)
-        <tr class="border-b hover:bg-purple-50">
-            <td class="p-3">{{ $libro->nombre }}</td>
-            <td class="p-3">{{ $libro->autor }}</td>
-            <td class="p-3">{{ $libro->isbn }}</td>
-            <td class="p-3">{{ $libro->editorial }}</td>
-            <td class="p-3">
-                {{ $libro->categoria ? $libro->categoria->nombre : 'Sin categoría' }}
-            </td>
-            <td class="p-3">
-                <a href="{{ route('libros.edit', $libro->id) }}" class="text-purple-600 hover:underline">Editar</a>
-                <form action="{{ route('libros.destroy', $libro->id) }}" method="POST" class="inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="text-red-600 hover:underline ml-2">Eliminar</button>
-                </form>
-            </td>
-        </tr>
-    @empty
-        <tr>
-            <td colspan="6" class="p-3 text-center text-gray-500">No hay libros registrados.</td>
-        </tr>
-    @endforelse
+  @forelse($libros as $libro)
+    <tr class="border-b hover:bg-purple-50">
+        <!-- Título -->
+        <td class="p-3">{{ $libro->nombre }}</td>
+
+        <!-- Autor -->
+        <td class="p-3">{{ $libro->autor }}</td>
+
+        <!-- ISBN -->
+        <td class="p-3">{{ $libro->isbn }}</td>
+
+        <!-- Categoría -->
+        <td class="p-3">
+            {{ $libro->categoria ? $libro->categoria->nombre : 'Sin categoría' }}
+        </td>
+
+        <!-- Disponibilidad -->
+        <td class="p-3">
+            @if($libro->estatus == 0)
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Disponible
+                </span>
+            @else
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                    Prestado
+                </span>
+            @endif
+        </td>
+
+        <!-- Acciones -->
+        <td class="p-3">
+            <a href="{{ route('libros.edit', $libro->id) }}" 
+               class="text-purple-600 hover:underline">Editar</a>
+
+            <form action="{{ route('libros.destroy', $libro->id) }}" method="POST" class="inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" 
+                        class="text-red-600 hover:underline ml-2"
+                        onclick="return confirm('¿Seguro que quieres eliminar este libro?')">
+                    Eliminar
+                </button>
+            </form>
+        </td>
+    </tr>
+@empty
+    <tr>
+        <td colspan="6" class="p-3 text-center text-gray-500">
+            No hay libros registrados.
+        </td>
+    </tr>
+@endforelse
+
 </tbody>
 </table>
             <!-- Paginación -->

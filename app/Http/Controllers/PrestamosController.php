@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Libro;
+use App\Models\Prestamo;
 
 class PrestamosController extends Controller
 {
     public function index()
     {
-        return view ('prestamos.index');
+        $prestamos = Prestamo::with('libro', 'usuario')->get();
+
+        return view('prestamos.index', compact('prestamos'));
     }
+
     public function create()
     {
-        return view ('prestamos.create');
+        return view('prestamos.create');
     }
 
     public function buscar_usuario(Request $request)

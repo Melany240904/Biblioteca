@@ -42,7 +42,7 @@
     <div class="bg-white shadow-md rounded-lg p-6 mt-8">
         <h2 class="text-xl font-bold mb-4 text-purple-700">Usuario Encontrado:</h2>
         <p><strong>ID:</strong> {{ $usuario->id }}</p>
-        <p><strong>Nombre:</strong> {{ $usuario->nombre }}</p>
+        <p><strong>Nombre:</strong> {{ $usuario->name }}</p>
         <p><strong>Email:</strong> {{ $usuario->email }}</p>
 
         <form action="{{ route('prestamos.select_libro') }}" method="POST" class="mt-6">
