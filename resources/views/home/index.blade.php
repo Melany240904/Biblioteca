@@ -81,22 +81,22 @@
         <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white shadow rounded-lg p-6 text-center">
                 <h3 class="text-lg font-semibold text-purple-700">Total de Libros</h3>
-                <p class="text-3xl font-bold text-purple-900">1,247</p>
+                <p class="text-3xl font-bold text-purple-900">{{ $total_libros }}</p>
                 <p class="text-sm text-gray-500">↑ 5.2% desde el mes pasado</p>
             </div>
             <div class="bg-white shadow rounded-lg p-6 text-center">
                 <h3 class="text-lg font-semibold text-purple-700">Libros Prestados</h3>
-                <p class="text-3xl font-bold text-purple-900">189</p>
+                <p class="text-3xl font-bold text-purple-900">{{ $libros_pestados}}</p>
                 <p class="text-sm text-gray-500">↓ 2.1% desde el mes pasado</p>
             </div>
             <div class="bg-white shadow rounded-lg p-6 text-center">
                 <h3 class="text-lg font-semibold text-purple-700">Usuarios Activos</h3>
-                <p class="text-3xl font-bold text-purple-900">543</p>
+                <p class="text-3xl font-bold text-purple-900">{{  $total_usuarios }}</p>
                 <p class="text-sm text-gray-500">↑ 12.7% desde el mes pasado</p>
             </div>
             <div class="bg-white shadow rounded-lg p-6 text-center">
                 <h3 class="text-lg font-semibold text-purple-700">Devoluciones Pendientes</h3>
-                <p class="text-3xl font-bold text-purple-900">24</p>
+                <p class="text-3xl font-bold text-purple-900">{{  $devoluciones_pendientes }}</p>
                 <p class="text-sm text-gray-500">↑ 3.4% desde ayer</p>
             </div>
         </section>
